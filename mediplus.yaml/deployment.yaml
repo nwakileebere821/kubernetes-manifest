@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mediplus-deployment
+  labels:
+    app: mediplus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mediplus
+  template:
+    metadata:
+      labels:
+        app: mediplus
+    spec:
+      containers:
+      - name: mediplus-container
+        image: 318689657850.dkr.ecr.us-east-1.amazonaws.com/kubernetes-registry:latest
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+      - name: ecr-registry-secret
