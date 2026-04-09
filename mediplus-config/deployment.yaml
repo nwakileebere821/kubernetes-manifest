@@ -15,7 +15,7 @@ spec:
         app: mediplus
     spec:
       containers:
-        - name: mediplus-container
+        - name: mediplus
           image: 318689657850.dkr.ecr.us-east-1.amazonaws.com/kubernetes-registry:31
           ports:
             - containerPort: 80
@@ -25,9 +25,9 @@ kind: Service
 metadata:
   name: mediplus-service
 spec:
-  type: LoadBalancer
   selector:
     app: mediplus
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80
